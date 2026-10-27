@@ -1,10 +1,8 @@
-DISCORD_TOKEN= "ใส่โทเคน bot ในนี้"
-CHANNEL_ID= 1561755779823042722 # แก้ตรงนี้เป็น channel id ของตัวเอง
-
-import os
-from datetime import date, timedelta
+DISCORD_TOKEN= "ใส่โทเคนในนี้"
+CHANNEL_ID = 1561755779823042722
 
 import discord
+from datetime import date
 from discord.ext import commands
 
 import tracker
@@ -94,8 +92,9 @@ async def recent(ctx, count: int = 5):
     await ctx.send("**Recent entries**\n" + "\n".join(lines))
 
 
+
 if __name__ == "__main__":
-    token = os.environ.get("DISCORD_TOKEN")
-    if not token:
-        raise SystemExit("Set the DISCORD_TOKEN environment variable first.")
-    bot.run(token)
+    if not DISCORD_TOKEN or DISCORD_TOKEN == "PASTE_YOUR_BOT_TOKEN_HERE":
+        raise SystemExit("Please set your Discord bot token in bot.py.")
+
+    bot.run(DISCORD_TOKEN)
